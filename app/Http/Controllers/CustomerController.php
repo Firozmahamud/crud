@@ -30,7 +30,6 @@ class CustomerController extends Controller
 
         ]);
 
-        // Customer::create($request->all());
         Customer::create($request->all());
         // return view('customer.index');
         return redirect()->route('customer.index');
@@ -49,33 +48,37 @@ class CustomerController extends Controller
     }
 
 
-    // public function update(Request $request, $id)
-    // {
-
-
-    //     $request->validate([
-    //         'email'=>'unique:customers,email',//'required|unique:customers'
-    //         'phone'=>'unique:customers,phone',
-    //     ]);
-
-    //     Customer::find($id)->update($request->all());
-    //         // $this->RespondWithSuccess('customer update successful');
-    //         return redirect()->route('customer.index');
-
-    // }
-    public function update(Request $request, Customer $product)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'email'=>'unique:customers,email',//'required|unique:customers'
-            'phone'=>'unique:customers,phone',
-        ]);
 
-        $product->update($request->all());
 
-        return redirect()->route('customer.index')
-                        ->with('success','Product updated successfully');
+        // $request->validate([
+        //     'email'=>'unique:customers,email',//'required|unique:customers'
+        //     'phone'=>'unique:customers,phone',
+        // ]);
+
+        // Customer::whereId($id)->update($request->all());
+        //     return redirect()->route('customer.index');
+
+
+            ///
+            $todo=Customer::find($id);
+        $todo->name=$request->name;
+        $todo->email=$request->email;
+        $todo->phone=$request->phone;
+        $todo->Address=$request->Address;
+        $todo->save();
+        return redirect(route('customer.index'));
+
+
+
+            // $validatedData = $request->validate([
+            //     'name' => 'required|max:255',
+            //     'price' => 'required'
+            // ]);
+            // Game::whereId($id)->update($validatedData);
+
     }
-
 
     public function destroy($id)
     {

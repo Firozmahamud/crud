@@ -26,13 +26,10 @@ edit customers
         </ul>
     </div>
 @endif
-
-<form action="{{ route('customer.update',$all->id) }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    {{--  @method('PUT')  --}}
-    {{--  @method('POST')  --}}
-
-
+    <form action="{{ route('customer.update',$all->id) }}" method="post">
+        {{--  <div class="form-group">  --}}
+            @csrf
+            @method('PATCH')
 
      <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
