@@ -32,6 +32,7 @@ Route::delete('customer/delete/{id}',[App\Http\Controllers\CustomerController::c
 
 
 //game crud
+// Route::resource('customer',App\Http\Controllers\CustomerController::class);
 Route::resource('game', GameController::class);
 //post crud
 Route::resource('posts', PostController::class);
